@@ -10,7 +10,7 @@ La información proviene de themoviedb.org que es una API gratuita y abierta, co
 
 🎞Nuestro proyecto cuenta con un input en el cual pueden buscarse películas y series poniendo el nombre de las mismas.  
 
-🎞Está íntegramente traducido a 6 idiomas:inglés, español, ruso, chino italiano y francés. Esto se logró por medio de un custom hook "useTranslate".  
+🎞Está íntegramente traducido a 7 idiomas:inglés, español, portugués, ruso, chino, italiano y francés. Esto se logró por medio de un custom hook "useTranslate".  
 
 🎞Tiene las péliculas y las series separadas en distintas categorías.  
 
