@@ -1,42 +1,34 @@
 import {
   Box,
   Flex,
-  Avatar,
   HStack,
-  Link,
   IconButton,
   Button,
   Menu,
   MenuButton,
   MenuList,
   MenuItem,
-  MenuDivider,
   useDisclosure,
-  useColorModeValue,
   Stack,
   Image,
 } from "@chakra-ui/react";
-import {
-  HamburgerIcon,
-  CloseIcon,
-  AddIcon,
-  ChevronDownIcon,
-} from "@chakra-ui/icons";
+import { HamburgerIcon, CloseIcon, ChevronDownIcon } from "@chakra-ui/icons";
 import { useContext } from "react";
 import { NavLink } from "react-router-dom";
-const Links = ["Dashboard", "Projects", "Team"];
 import { useTranslate } from "../../hooks/useTranslate";
 import { Context } from "../../context/Context";
 import { navbarTranslations } from "../../translations/navbarTranslations";
 import logo1 from "../../assets/logo1.png";
 import logo2 from "../../assets/logo2.png";
-import { AiFillHome } from "react-icons/./ai";
-import { BiCameraMovie } from "react-icons/././Bi";
-import { FiTv } from "react-icons/./Fi";
 import { SearchButton } from "../inputSearch";
 import { SelectLanguage } from "../selectLanguage";
 import { useMediaQuery } from "react-responsive";
-import { FiMoon, FiSun } from "react-icons/./Fi";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFilm } from "@fortawesome/free-solid-svg-icons";
+import { faTv } from "@fortawesome/free-solid-svg-icons";
+import { faHouse } from "@fortawesome/free-solid-svg-icons";
+import { faMoon } from "@fortawesome/free-solid-svg-icons";
+import { faSun } from "@fortawesome/free-solid-svg-icons";
 
 export const Navbar = () => {
   const { isOpen, onOpen, onClose } = useDisclosure();
@@ -54,17 +46,6 @@ export const Navbar = () => {
       ? context.setClearTheme(false)
       : context.setClearTheme(true);
   };
-
-  //   const [isSmallerScreen, setIsSmallerScreen] = useState(false);
-
-  // useEffect(() => {
-  //   const handleResize = () => {
-  //     setIsSmallerScreen(window.innerWidth <= 768);
-  //   };
-  //   window.addEventListener("resize", handleResize);
-  //   return () => window.removeEventListener("resize", handleResize);
-  // }, []);
-
   return (
     <>
       <Box
@@ -84,7 +65,7 @@ export const Navbar = () => {
           />
           <HStack spacing={8} alignItems="center">
             <NavLink to="/">
-              <Box ml={isSmallScreen ? "100px " : "20px"}>
+              <Box ml={isSmallScreen ? "30px " : "20px"}>
                 <Image src={context.clearTheme ? logo1 : logo2} w="150px" />
               </Box>
             </NavLink>
@@ -97,13 +78,13 @@ export const Navbar = () => {
               <Menu>
                 <NavLink to="/">
                   <MenuButton fontSize="40px">
-                    <AiFillHome />
+                    <FontAwesomeIcon icon={faHouse} />
                   </MenuButton>
                 </NavLink>
               </Menu>
               <Menu>
                 <MenuButton fontSize={"40px"}>
-                  <BiCameraMovie />
+                  <FontAwesomeIcon icon={faFilm} />
                 </MenuButton>
                 <MenuList
                   bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
@@ -131,7 +112,7 @@ export const Navbar = () => {
               </Menu>
               <Menu>
                 <MenuButton fontSize={"40px"}>
-                  <FiTv />
+                  <FontAwesomeIcon icon={faTv} />
                 </MenuButton>
                 <MenuList
                   bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
@@ -160,6 +141,7 @@ export const Navbar = () => {
           </HStack>
 
           <Flex ml={isMScreen ? "10px" : "10px"} alignItems={"center"}>
+            <Flex></Flex>
             <Box display={isSmallScreen ? "none" : "flex"}>
               <SearchButton />
             </Box>
@@ -171,7 +153,13 @@ export const Navbar = () => {
 
             <IconButton
               _hover={{ background: "none" }}
-              icon={context.clearTheme ? <FiMoon /> : <FiSun />}
+              icon={
+                context.clearTheme ? (
+                  <FontAwesomeIcon icon={faMoon} />
+                ) : (
+                  <FontAwesomeIcon icon={faSun} />
+                )
+              }
               onClick={changeTheme}
               bg={"none"}
               color={context.clearTheme ? "black" : "white"}
@@ -195,7 +183,9 @@ export const Navbar = () => {
                     }
                     fontSize="25px"
                   >
-                    <AiFillHome />
+                    <Box mr={"35px"}>
+                      <FontAwesomeIcon icon={faHouse} />
+                    </Box>
                   </MenuButton>
                 </NavLink>
               </Menu>
@@ -210,7 +200,7 @@ export const Navbar = () => {
                   rightIcon={<ChevronDownIcon />}
                   fontSize="25px"
                 >
-                  <BiCameraMovie />
+                  <FontAwesomeIcon icon={faFilm} />
                 </MenuButton>
                 <MenuList
                   bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
@@ -247,7 +237,7 @@ export const Navbar = () => {
                   }
                   fontSize="25px"
                 >
-                  <FiTv />
+                  <FontAwesomeIcon icon={faTv} />
                 </MenuButton>
                 <MenuList
                   bg={context.clearTheme ? "brand.secondary" : "brand.accent"}
@@ -273,12 +263,14 @@ export const Navbar = () => {
                   </MenuItem>
                 </MenuList>
               </Menu>
-              <Menu>
-                <SearchButton />
-              </Menu>
-              <Menu>
-                <SelectLanguage />
-              </Menu>
+              <Flex flexDir={"row"}>
+                <Menu>
+                  <SearchButton />
+                </Menu>
+                <Menu>
+                  <SelectLanguage />
+                </Menu>
+              </Flex>
             </Stack>
           </Box>
         ) : null}

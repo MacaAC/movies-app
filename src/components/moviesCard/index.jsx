@@ -2,9 +2,10 @@ import { Card, Button } from "@chakra-ui/react";
 import { Link } from "react-router-dom";
 import { useMediaQuery } from "react-responsive";
 import noimage from "../../assets/noimage.png";
-import { AiOutlineEye } from "react-icons/./ai";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faEye } from "@fortawesome/free-solid-svg-icons";
 
-export const MoviesCards = ({ alt, movieTitle, img, id }) => {
+export const MoviesCards = ({ movieTitle, img, id }) => {
   const isSmallScreen = useMediaQuery({
     query: "(max-width: 768px)",
   });
@@ -30,26 +31,26 @@ export const MoviesCards = ({ alt, movieTitle, img, id }) => {
           <Link to={`/details/movie/${id}`}>
             <Button
               variant={"unstyled"}
-              fontSize={isSmallScreen ? "45px" : "45px"}
-              ml={isSmallScreen ? "170px" : "210px"}
-              mt={isSmallScreen ? "140px" : "345px"}
+              fontSize={isSmallScreen ? "35px" : "45px"}
+              ml={isSmallScreen ? "80px" : "210px"}
+              mt={isSmallScreen ? "140px" : "330px"}
               position="relative"
               className="btn-card"
             >
-              <AiOutlineEye />
+              <FontAwesomeIcon icon={faEye} />
             </Button>
           </Link>
         ) : (
           <Link to={`/details/tv/${id}`}>
             <Button
               variant={"unstyled"}
-              fontSize={isSmallScreen ? "30px" : "45px"}
-              ml={isSmallScreen ? "170px" : "210px"}
-              mt={isSmallScreen ? "175px" : "345px"}
+              fontSize={isSmallScreen ? "35px" : "45px"}
+              ml={isSmallScreen ? "80px" : "210px"}
+              mt={isSmallScreen ? "130px" : "335px"}
               position="relative"
               className="btn-card"
             >
-              <AiOutlineEye />
+              <FontAwesomeIcon icon={faEye} />
             </Button>
           </Link>
         )}

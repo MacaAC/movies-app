@@ -1,14 +1,14 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useState } from "react";
 import { useParams } from "react-router-dom";
 import moment from "moment";
 import MovieTrailer from "./indexTrailer";
-import { BsFillPlayFill } from "react-icons/./bs";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faPlay } from "@fortawesome/free-solid-svg-icons";
 import {
   Image,
   Box,
   Text,
   Button,
-  Icon,
   Flex,
   UnorderedList,
   ListItem,
@@ -49,6 +49,7 @@ const MovieDetails = () => {
       backgroundSize={"cover"}
       backgroundPosition="center"
       className={"background"}
+      px={isSmallScreen ? "10px" : " "}
     >
       {isLoading && (
         <Spinner
@@ -95,7 +96,13 @@ const MovieDetails = () => {
               display="flex"
               alignItems="center"
             >
-              {trailer ? <Icon mr={"10px"} as={BsFillPlayFill} /> : " "}
+              {trailer ? (
+                <Box mr={"10px"}>
+                  <FontAwesomeIcon icon={faPlay} />
+                </Box>
+              ) : (
+                " "
+              )}
               {trailer ? "Trailer" : <ViewOffIcon />}
             </Button>
 
