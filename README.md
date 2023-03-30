@@ -29,4 +29,4 @@ La información proviene de themoviedb.org que es una API gratuita y abierta, co
 
 ![The Movie App](src/assets/movie.png) 
 
-Finalmente [Acá está nuestro deployado](https://github.com/MacaAC/movies-app)😍⌨️
+Finalmente [Acá está nuestro deployado](https://themovieapp-ada.netlify.app/)😍⌨️
